@@ -36,7 +36,17 @@ var engine = Engine.create(container, {
 });
 
 // マウス操作を追加
-var mouseConstraint = MouseConstraint.create(engine);
+// var mouseConstraint = MouseConstraint.create(engine);
+// World.add(engine.world, mouseConstraint);
+
+var mouseConstraint = MouseConstraint.create(engine, {
+  element: container, //マウス操作を感知する要素を指定（DEMOでは生成したcanvasを指定）
+  constraint: {
+    render: {
+      strokeStyle: "rgba(0, 0, 0, 0)", //マウス操作の表示を隠す
+    },
+  },
+});
 World.add(engine.world, mouseConstraint);
 
 //床を作る
